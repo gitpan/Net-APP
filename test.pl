@@ -33,7 +33,10 @@ sub input {
 
 print <<END;
 In order to test Net::APP, you need a cleartext APP server available, i.e. a
-Safe Passage tunnel, and an account on the APP server.
+Safe Passage or tunnel or Stunnel <http://www.stunnel.org>, and an account on
+the APP server.
+
+(i.e. stunnel -P none -c -d 8888 -r appsandbox.criticalpath.net:8889)
 
 END
 
@@ -47,7 +50,7 @@ my $password = input "Enter your APP password: ";
 print "\n\n"; system("stty echo");
 
 test 2, my $app = new Net::APP ( "$hostname:$port",
-                                  Debug => 1,
+                                  Debug => 0,
                                 );
 test 3, $app->login( User => $user,
                      Domain => $domain,
@@ -59,7 +62,7 @@ test 6, $app->code == 0;
 $app->close();
 undef $app;
 test 6, $app = new Net::APP ( "$hostname:$port",
-                              Debug => 1,
+                              Debug => 0,
                               User => $user,
                               Domain => $domain,
                               Password => $password,

@@ -4,6 +4,9 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'	=> 'Net::APP',
     'VERSION_FROM' => 'APP.pm', # finds $VERSION
-    'PREREQ_PM' => { 'Net::Cmd' => 0, },
+    'PREREQ_PM' => { 'Net::Cmd' => 0,
+#                     'IO::Socket::SSL' => 0,
+#                     'Text::CSV_XS' => 0,
+                   },
     'dist' => {},
 );
